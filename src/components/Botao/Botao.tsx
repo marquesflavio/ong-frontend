@@ -1,9 +1,13 @@
 import './Botao.css'
 
-export function Botao(){
+interface BotaoProps {
+    children : string;
+}
+
+export function Botao(props : BotaoProps){
     return(
-        <button>
-            Salvar
+        <button className='botaoPrincipal'>
+            {props.children}
         </button>
     )
 }

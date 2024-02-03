@@ -1,13 +1,15 @@
 import './App.css'
+import { PaginaInicial } from './components/PaginaInicial/PaginaInicial'
 // import { Formulario } from './components/Formulario/Formulario'
-import { OngsCadastradas } from './components/OngsCadastradas/OngsCadastradas'
+// import { OngsCadastradas } from './components/OngsCadastradas/OngsCadastradas'
 
 function App() {
 
   return (
     <main>
+      <PaginaInicial />
       {/* <Formulario /> */}
-      <OngsCadastradas />
+      {/* <OngsCadastradas /> */}
     </main>
   )
 }

@@ -47,7 +47,7 @@ export function Formulario() {
                         {...register("proposito")}
                     />
                 </div>
-                <Botao />
+                <Botao children="Cadastrar" />
             </form>
         </main>
     )
