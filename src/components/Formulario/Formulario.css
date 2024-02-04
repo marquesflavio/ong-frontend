@@ -7,6 +7,20 @@
     align-items: center;
     justify-content: flex-start;
     padding: 2rem;
+    border: 1px rgba(159, 159, 160, 0.007) solid;
+    border-radius: 1rem;
+}
+.container_icone {
+    align-self: start;
+}
+.icone {
+    margin: 0px 5px;
+    align-self: flex-start;
+    vertical-align: middle;
+}
+.icone:hover, .container_icone:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .form-div {
@@ -27,4 +41,8 @@
     height: 2.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem; 
+}
+.erro {
+    color: red;
+    text-align: left;
 }

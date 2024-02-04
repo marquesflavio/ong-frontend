@@ -1,19 +1,26 @@
+import { Link } from 'react-router-dom'
 import { Botao } from '../Botao/Botao'
 import './PaginaInicial.css'
 export function PaginaInicial() {
     return (
         <main className="container">
             <h1>Bem vindo a página inicial!</h1>
-
             <h3>Selecione a opção desejada: </h3>
-
-            <div>
+            <div className='container_div'>
                 <p>Desejo cadastrar uma nova instituição</p>
-                <Botao children='Cadastrar' />
+                <Link to="/formulario">
+                    <Botao
+                        type='button'
+                        children='Cadastrar' />
+                </Link>
             </div>
-            <div>
+            <div className='container_div'>
                 <p>Desejo ver ou editar as instituições cadastradas</p>
-                <Botao children='Visualizar' />
+                <Link to="/ongs-cadastradas">
+                    <Botao
+                        type='button'
+                        children='Visualizar' />
+                </Link>
             </div>
 
 
