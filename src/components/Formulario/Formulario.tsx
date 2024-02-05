@@ -8,7 +8,7 @@ import { useState } from "react";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
-
+import { mensagemDeSucesso } from "../../utils/Alertas/MensagemDeSucesso";
 
 type ongFormularioDados = z.infer<typeof OngSchema>
 
@@ -22,10 +22,9 @@ export function Formulario() {
         formState: { errors }
     } = useForm<ongFormularioDados>({ resolver: zodResolver(OngSchema) })
 
-   
     function formularioEnviado(dados: ongFormularioDados) {
-        setOutput(JSON.stringify(dados, null, 2))
-        alert('Dados cadastrados com sucesso!');
+        setOutput(JSON.stringify(dados, null, 2));
+        mensagemDeSucesso();
         reset();
     }
 
