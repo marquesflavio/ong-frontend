@@ -22,7 +22,13 @@
     cursor: pointer;
     text-decoration: underline;
 }
-
+.link {
+    color: black;
+}
+.link:hover{
+    color: black;
+    cursor: pointer;
+}
 .form-div {
     display: flex;
     flex-direction: column;

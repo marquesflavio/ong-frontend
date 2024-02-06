@@ -9,7 +9,13 @@
     padding: 2rem;
     align-items: center
 }
-
+.link {
+    color: black;
+}
+.link:hover{
+    color: black;
+    cursor: pointer;
+}
 .ongs-cadastradas_card {
     border-color: rgb(228 228 231);
     border-radius: 0.25rem;

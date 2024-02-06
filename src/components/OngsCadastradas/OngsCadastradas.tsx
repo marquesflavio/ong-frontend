@@ -5,7 +5,7 @@ export function OngsCadastradas() {
     return (
         <main className="container">
             <div className="container_icone">
-                <Link to="/">
+                <Link to="/" className='link'>
                     <FaArrowCircleLeft className="icone" />
                     Voltar para a página inicial
                 </Link>
