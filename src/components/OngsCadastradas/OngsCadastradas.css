@@ -29,3 +29,31 @@
     text-align: left;
     font-weight: bold
 }
+.container-ongs{
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+}
+.container-ongs_box{
+    border: 2px solid rgba(0, 0, 0, 0.155);
+    border-radius: 10px;
+    margin: 10px;
+}
+.containter-ongs_icone{
+    display: flex;
+    justify-content: flex-end;
+}
+.container-ongs_lixeira{
+    margin: 10px;
+    color: rgba(255, 0, 0, 0.355);
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+.container-ongs_lixeira:hover{
+    color: red;
+    cursor: pointer;
+}
+.img {
+    border-radius: 10px;
+    width: 70%;
+}
