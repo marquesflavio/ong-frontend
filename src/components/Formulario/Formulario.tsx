@@ -70,6 +70,7 @@ export function Formulario() {
                 <Botao
                     type="submit"
                     children="Cadastrar"
+                    onClick={() => {}}
                 />
             </form>
             <pre>{output}</pre>

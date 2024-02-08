@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 import './OngsCadastradas.css'
 import { FaArrowCircleLeft, FaRegTrashAlt } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
-import { mensagemDeAlerta } from '../../utils/Alertas/MensagemDeSucesso'
+import { mensagemDeAlerta } from '../../utils/Alertas/MensagemDeAlerta'
+import { Botao } from '../Botao/Botao'
+import '../Botao/Botao.css'
 
 interface Ong {
     name: string
@@ -30,8 +32,7 @@ export function OngsCadastradas() {
     }, []);
 
     const excluirOng = () => {
-        mensagemDeAlerta();
-        //inserir a exclusão, caso o usuário decida excluir, ou anular.
+        //inserir modal da exclusão, caso o usuário decida excluir, ou anular.
 
     }
 
@@ -56,9 +57,6 @@ export function OngsCadastradas() {
                     </div>
                 ))}
             </div>
-
-
-
         </main>
     )
 }

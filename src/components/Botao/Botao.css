@@ -3,7 +3,27 @@
     background-color: rgb(16, 185, 129);
     border-radius: 0.25rem;
     font-weight: 600;
-    text-color: #FFF;
+    color: #000000;
     margin: 0.5rem;
     padding: 0.5rem;
+}
+
+.danger {
+    background-color: rgb(185, 16, 16);
+    color: #000000;
+    margin: 2rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+.voltar{
+    background-color: rgb(172, 172, 172);
+    color: #000000;
+    margin: 2rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    margin: 0.5rem;
+    padding: 0.5rem;
+
 }

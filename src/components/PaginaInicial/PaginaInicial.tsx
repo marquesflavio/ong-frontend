@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { Botao } from '../Botao/Botao'
 import './PaginaInicial.css'
+import '../Botao/Botao.css'
+
 export function PaginaInicial() {
     return (
         <main className="container">
@@ -10,6 +12,8 @@ export function PaginaInicial() {
                 <p>Desejo cadastrar uma nova instituição</p>
                 <Link to="/formulario">
                     <Botao
+                        className='botaoPrincipal'
+                        onClick={() => { }}
                         type='button'
                         children='Cadastrar' />
                 </Link>
@@ -18,6 +22,8 @@ export function PaginaInicial() {
                 <p>Desejo ver ou editar as instituições cadastradas</p>
                 <Link to="/ongs-cadastradas">
                     <Botao
+                        className='botaoPrincipal'
+                        onClick={() => { }}
                         type='button'
                         children='Visualizar' />
                 </Link>
