@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Botao } from "../Botao/Botao";
-import "../Botao/Botao.css";
+import { Button } from "../Button/Button";
+import "../Button/Button.css";
 import "./PaginaInicial.css";
 
 export function PaginaInicial() {
@@ -11,23 +11,21 @@ export function PaginaInicial() {
       <div className="container_div">
         <p>Desejo cadastrar uma nova instituição</p>
         <Link to="/formulario">
-          <Botao
+          <Button
             className="botaoPrincipal"
-            onClick={() => {}}
             type="button"
-            children="Cadastrar"
-          />
+            onClick={() => { }}
+          >Cadastrar</Button>
         </Link>
       </div>
       <div className="container_div">
         <p>Desejo ver ou editar as instituições cadastradas</p>
         <Link to="/ongs-cadastradas">
-          <Botao
+          <Button
             className="botaoPrincipal"
-            onClick={() => {}}
             type="button"
-            children="Visualizar"
-          />
+            onClick={() => { }}
+          >Visualizar</Button>
         </Link>
       </div>
     </main>

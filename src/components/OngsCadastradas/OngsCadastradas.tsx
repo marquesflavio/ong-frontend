@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaArrowCircleLeft, FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "../Botao/Botao.css";
 import "./OngsCadastradas.css";
 
 interface Ong {

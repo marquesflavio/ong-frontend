@@ -7,12 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { z } from "zod";
 import { mensagemDeSucesso } from "../../utils/Alertas/MensagemDeSucesso";
 import { OngSchema } from "../../utils/Schemas/FormSchema";
-import { Botao } from "../Botao/Botao";
-import "./Formulario.css";
+import { Button } from "../Button/Button";
+import "./Form.css";
 
 type ongFormularioDados = z.infer<typeof OngSchema>;
 
-export function Formulario() {
+export function Form() {
   const [output, setOutput] = useState("");
 
   const {
@@ -29,8 +29,7 @@ export function Formulario() {
   }
 
   return (
-    //@ já tem uma main no app, só pode ter uma main renderizada por vez. É uma boa prática usar no App apenas ou colocar no router. Se for no router por estar num modelo de wrapper usando outlet do react router dom.
-    <main className="container">
+    <section className="container">
       <div className="container_icone">
         <Link to="/" className="link">
           <FaArrowCircleLeft className="icone" />
@@ -71,9 +70,13 @@ export function Formulario() {
             <span className="erro">{errors.proposito.message}</span>
           )}
         </div>
-        <Botao type="submit" children="Cadastrar" onClick={() => {}} />
+        <Button
+          type="submit"
+          onClick={() => { }}
+          className="botaoPrincipal"
+        >Cadastrar</Button>
       </form>
       <pre>{output}</pre>
-    </main>
+    </section>
   );
 }

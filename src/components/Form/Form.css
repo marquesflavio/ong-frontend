@@ -10,35 +10,44 @@
     border: 1px rgba(159, 159, 160, 0.007) solid;
     border-radius: 1rem;
 }
+
 .container_icone {
     align-self: start;
 }
+
 .icone {
     margin: 0px 5px;
     align-self: flex-start;
     vertical-align: middle;
 }
-.icone:hover, .container_icone:hover {
+
+.icone:hover,
+.container_icone:hover {
     cursor: pointer;
     text-decoration: underline;
 }
+
 .link {
     color: black;
 }
-.link:hover{
+
+.link:hover {
     color: black;
     cursor: pointer;
 }
+
 .form-div {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
     margin: 2rem;
 }
+
 .form-div_label {
     font-weight: bold;
     text-align: left;
 }
+
 .form-div_input {
     border-width: 1px;
     border-color: rgb(228 228 231);
@@ -46,8 +55,9 @@
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     height: 2.5rem;
     padding-left: 0.75rem;
-    padding-right: 0.75rem; 
+    padding-right: 0.75rem;
 }
+
 .erro {
     color: red;
     text-align: left;

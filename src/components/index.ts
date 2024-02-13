@@ -5,7 +5,7 @@
  * ExampleComponent
  */
 
-export * from "./Botao/Botao";
+// export * from "./Botao/Botao";
 
 /**
  * Um dica a mais, busque usar nomenclartura em inglês.
