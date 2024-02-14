@@ -22,10 +22,27 @@ export function Form() {
     formState: { errors },
   } = useForm<ongFormularioDados>({ resolver: zodResolver(OngSchema) });
 
-  function formularioEnviado(dados: ongFormularioDados) {
-    setOutput(JSON.stringify(dados, null, 2));
-    mensagemDeSucesso();
-    reset();
+  async function formularioEnviado(dados: ongFormularioDados) {
+    try {
+      const response = await fetch('https://65c1f4b1f7e6ea59682a235d.mockapi.io/api/v1/ongs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao enviar os dados.');
+      }
+
+      const responseData = await response.json();
+      console.log('Resposta do servidor:', responseData);
+      mensagemDeSucesso();
+      reset();
+    } catch (error) {
+      console.error('Ocorreu um erro:', error);
+    }
   }
 
   return (
