@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -9,6 +9,9 @@ import { mensagemDeSucesso } from "../../utils/Alertas/MensagemDeSucesso";
 import { OngSchema } from "../../utils/Schemas/FormSchema";
 import { Button } from "../Button/Button";
 import "./Form.css";
+import axios from "axios"
+
+const baseURL = "https://65c1f4b1f7e6ea59682a235d.mockapi.io/api/v1"
 
 type ongFormularioDados = z.infer<typeof OngSchema>;
 
@@ -23,6 +26,12 @@ export function Form() {
   } = useForm<ongFormularioDados>({ resolver: zodResolver(OngSchema) });
 
   function formularioEnviado(dados: ongFormularioDados) {
+    axios.post(`${baseURL}/ongs`, dados).then((response) => {
+      console.log('resposta do servidor: ', response)
+    })
+    .catch((error) => {
+      console.log("Erro: ", error)
+    })
     setOutput(JSON.stringify(dados, null, 2));
     mensagemDeSucesso();
     reset();

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./OngsCadastradas.css";
 
 interface Ong {
-  name: string;
+  nome: string;
   imagem: string;
   proposito: string;
 }
@@ -52,8 +52,8 @@ export function OngsCadastradas() {
                 className="container-ongs_lixeira"
               />
             </div>
-            <h2>{ong.name}</h2>
-            <img src={ong.imagem} alt={ong.name} className="img" />
+            <h2>{ong.nome}</h2>
+            <img src={ong.imagem} alt={ong.nome} className="img" />
             <p>{ong.proposito}</p>
           </div>
         ))}
