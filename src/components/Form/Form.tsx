@@ -1,6 +1,5 @@
 import { MdArrowBackIos } from "react-icons/md";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -13,8 +12,7 @@ import "../Button/Button.css";
 
 type ongFormData = z.infer<typeof OngSchema>;
 
-export function Formulario() {
-  const [output, setOutput] = useState("");
+export function Form() {
 
   const {
     register,
@@ -23,10 +21,27 @@ export function Formulario() {
     formState: { errors },
   } = useForm<ongFormData>({ resolver: zodResolver(OngSchema) });
 
-  function formularioEnviado(dados: ongFormData) {
-    setOutput(JSON.stringify(dados, null, 2));
-    mensagemDeSucesso();
-    reset();
+  async function formularioEnviado(dados: ongFormData) {
+    try {
+      const response = await fetch('https://65c1f4b1f7e6ea59682a235d.mockapi.io/api/v1/ongs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao enviar os dados.');
+      }
+
+      const responseData = await response.json();
+      console.log('Resposta do servidor:', responseData);
+      mensagemDeSucesso();
+      reset();
+    } catch (error) {
+      console.error('Ocorreu um erro:', error);
+    }
   }
 
   return (
@@ -89,7 +104,6 @@ export function Formulario() {
           className="botaoPrincipal"
         />
       </form>
-      <pre>{output}</pre>
     </section>
   );
 }

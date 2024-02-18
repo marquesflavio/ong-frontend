@@ -7,9 +7,9 @@ export function AppRoutes() {
     return (
         <HashRouter>
             <Routes>
-                <Route path="/" element={<PaginaInicial />}/>
-                <Route path="/formulario" element={<Formulario />}/>
-                <Route path="/ongs-cadastradas" element={<OngsCadastradas />}/>
+                <Route path="/" element={<PaginaInicial />} />
+                <Route path="/formulario" element={<Form />} />
+                <Route path="/ongs-cadastradas" element={<OngsCadastradas />} />
             </Routes>
         </HashRouter>
     )
