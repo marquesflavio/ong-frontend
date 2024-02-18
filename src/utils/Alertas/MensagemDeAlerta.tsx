@@ -1,4 +1,4 @@
-import { Botao } from "../../components/Botao/Botao";
+import { Botao } from "../../components/Button/Button";
 
 //@ se devolve jsx não pode estar em utils, porque seria um componente.
 

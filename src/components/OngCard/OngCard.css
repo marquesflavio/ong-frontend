@@ -1,5 +1,6 @@
-.container {
-    height: 100vh;
+.container_card {
+    height: auto;
+    min-height: 800px;
     background-color: rgb(250 250 250);
     display: flex;
     flex-direction: column;
@@ -7,7 +8,12 @@
     align-items: start;
     justify-content: flex-start;
     padding: 2rem;
-    align-items: center
+    align-items: center;
+    width: auto;
+    max-width: 900px;
+    width: auto;
+    border-radius: 1rem;
+   
 }
 .link {
     color: black;

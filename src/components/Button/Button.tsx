@@ -1,5 +1,12 @@
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+import { ButtonHTMLAttributes } from "react";
+import "./Button.css";
 
-export function Button(props: ButtonProps) {
-    return <button {...props} />;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+
+export function Button({ children, type, ...rest }: ButtonProps) {
+  return (
+    <button type={type} {...rest}>
+      {children}
+    </button>
+  );
 }

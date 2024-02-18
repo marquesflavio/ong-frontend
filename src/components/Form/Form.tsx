@@ -1,52 +1,70 @@
+import { MdArrowBackIos } from "react-icons/md";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
 import { z } from "zod";
+import "react-toastify/dist/ReactToastify.css";
 import { mensagemDeSucesso } from "../../utils/Alertas/MensagemDeSucesso";
 import { OngSchema } from "../../utils/Schemas/FormSchema";
-import { Button } from "../Button/Button";
+import { Button } from "../Button";
 import "./Form.css";
-import axios from "axios"
+import "../Button/Button.css";
 
-const baseURL = "https://65c1f4b1f7e6ea59682a235d.mockapi.io/api/v1"
-
-type ongFormularioDados = z.infer<typeof OngSchema>;
+type ongFormData = z.infer<typeof OngSchema>;
 
 export function Form() {
-  const [output, setOutput] = useState("");
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ongFormularioDados>({ resolver: zodResolver(OngSchema) });
+  } = useForm<ongFormData>({ resolver: zodResolver(OngSchema) });
 
-  function formularioEnviado(dados: ongFormularioDados) {
-    axios.post(`${baseURL}/ongs`, dados).then((response) => {
-      console.log('resposta do servidor: ', response)
-    })
-    .catch((error) => {
-      console.log("Erro: ", error)
-    })
-    setOutput(JSON.stringify(dados, null, 2));
-    mensagemDeSucesso();
-    reset();
+  async function formularioEnviado(dados: ongFormData) {
+    try {
+      const response = await fetch('https://65c1f4b1f7e6ea59682a235d.mockapi.io/api/v1/ongs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao enviar os dados.');
+      }
+
+      const responseData = await response.json();
+      console.log('Resposta do servidor:', responseData);
+      mensagemDeSucesso();
+      reset();
+    } catch (error) {
+      console.error('Ocorreu um erro:', error);
+    }
   }
 
   return (
     <section className="container">
       <div className="container_icone">
         <Link to="/" className="link">
-          <FaArrowCircleLeft className="icone" />
-          Voltar para a página inicial
+          <MdArrowBackIos className="icone" />
         </Link>
       </div>
-      <h1>Formulário de Cadastro</h1>
-      <form action="" onSubmit={handleSubmit(formularioEnviado)}>
+      <h1 className="container_h1">Cadastrar organizações</h1>
+      <div className="container_info">
+        <p>
+          Nessa seção é possível cadastrar Ongs...Lorem ipsum dolor sit, amet
+          consectetur adipisicing elit. Provident sint voluptatem sed laudantium
+          officiis, veritatis enim libero mollitia tenetur eligendi autem
+          accusamus fugiat repellat. Ad repellat nam ea earum quaerat.
+        </p>
+      </div>
+      <form
+        action=""
+        onSubmit={handleSubmit(formularioEnviado)}
+        className="form"
+      >
         {/* //@ se você quiser isso poderia ser um componente, para abstrair a repetição, pode por exemplo já tratar a mensagem de erro. */}
         {/* //@ se fosse componentizar pode ainda usar composition, para compor as partes e deixar mais flexível e performático, mas e poder usar o register de forma mais fácil */}
         {/* //________________ */}
@@ -81,11 +99,11 @@ export function Form() {
         </div>
         <Button
           type="submit"
-          onClick={() => { }}
+          children="Cadastrar"
+          onClick={() => {}}
           className="botaoPrincipal"
-        >Cadastrar</Button>
+        />
       </form>
-      <pre>{output}</pre>
     </section>
   );
 }
