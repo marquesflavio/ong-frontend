@@ -1,15 +1,15 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import { PaginaInicial } from "../components/Home/Home";
-import { Formulario } from "../components/Form/Form";
-import { OngsCadastradas } from "../components/OngCard/OngCard";
+import { Form } from "../components/Form/index";
+import { Home } from "../components/Home/index";
+import { OngCard } from "../components/OngCard/index";
 
 export function AppRoutes() {
     return (
         <HashRouter>
             <Routes>
-                <Route path="/" element={<PaginaInicial />} />
+                <Route path="/" element={<Home /> } />
                 <Route path="/formulario" element={<Form />} />
-                <Route path="/ongs-cadastradas" element={<OngsCadastradas />} />
+                <Route path="/ongs-cadastradas" element={<OngCard />} />
             </Routes>
         </HashRouter>
     )

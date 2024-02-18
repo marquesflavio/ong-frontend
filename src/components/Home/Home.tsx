@@ -2,7 +2,7 @@ import "./Home.css";
 import { Button } from "../Button";
 import { Link } from "react-router-dom";
 
-export function PaginaInicial() {
+export function Home() {
   return (
     <section className="container">
       <h1 className="container_h1">Bem vindo ao "nome do site/aplicação"</h1>
