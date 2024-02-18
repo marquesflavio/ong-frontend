@@ -1,16 +1,17 @@
+import { MdArrowBackIos } from "react-icons/md";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
 import { z } from "zod";
+import "react-toastify/dist/ReactToastify.css";
 import { mensagemDeSucesso } from "../../utils/Alertas/MensagemDeSucesso";
 import { OngSchema } from "../../utils/Schemas/FormSchema";
-import { Botao } from "../Botao/Botao";
-import "./Formulario.css";
+import { Button } from "../Button";
+import "./Form.css";
+import "../Button/Button.css";
 
-type ongFormularioDados = z.infer<typeof OngSchema>;
+type ongFormData = z.infer<typeof OngSchema>;
 
 export function Formulario() {
   const [output, setOutput] = useState("");
@@ -20,25 +21,35 @@ export function Formulario() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ongFormularioDados>({ resolver: zodResolver(OngSchema) });
+  } = useForm<ongFormData>({ resolver: zodResolver(OngSchema) });
 
-  function formularioEnviado(dados: ongFormularioDados) {
+  function formularioEnviado(dados: ongFormData) {
     setOutput(JSON.stringify(dados, null, 2));
     mensagemDeSucesso();
     reset();
   }
 
   return (
-    //@ já tem uma main no app, só pode ter uma main renderizada por vez. É uma boa prática usar no App apenas ou colocar no router. Se for no router por estar num modelo de wrapper usando outlet do react router dom.
-    <main className="container">
+    <section className="container">
       <div className="container_icone">
         <Link to="/" className="link">
-          <FaArrowCircleLeft className="icone" />
-          Voltar para a página inicial
+          <MdArrowBackIos className="icone" />
         </Link>
       </div>
-      <h1>Formulário de Cadastro</h1>
-      <form action="" onSubmit={handleSubmit(formularioEnviado)}>
+      <h1 className="container_h1">Cadastrar organizações</h1>
+      <div className="container_info">
+        <p>
+          Nessa seção é possível cadastrar Ongs...Lorem ipsum dolor sit, amet
+          consectetur adipisicing elit. Provident sint voluptatem sed laudantium
+          officiis, veritatis enim libero mollitia tenetur eligendi autem
+          accusamus fugiat repellat. Ad repellat nam ea earum quaerat.
+        </p>
+      </div>
+      <form
+        action=""
+        onSubmit={handleSubmit(formularioEnviado)}
+        className="form"
+      >
         {/* //@ se você quiser isso poderia ser um componente, para abstrair a repetição, pode por exemplo já tratar a mensagem de erro. */}
         {/* //@ se fosse componentizar pode ainda usar composition, para compor as partes e deixar mais flexível e performático, mas e poder usar o register de forma mais fácil */}
         {/* //________________ */}
@@ -71,9 +82,14 @@ export function Formulario() {
             <span className="erro">{errors.proposito.message}</span>
           )}
         </div>
-        <Botao type="submit" children="Cadastrar" onClick={() => {}} />
+        <Button
+          type="submit"
+          children="Cadastrar"
+          onClick={() => {}}
+          className="botaoPrincipal"
+        />
       </form>
       <pre>{output}</pre>
-    </main>
+    </section>
   );
 }

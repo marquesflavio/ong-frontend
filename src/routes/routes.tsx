@@ -1,7 +1,7 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import { PaginaInicial } from "../components/PaginaInicial/PaginaInicial";
-import { Formulario } from "../components/Formulario/Formulario";
-import { OngsCadastradas } from "../components/OngsCadastradas/OngsCadastradas";
+import { PaginaInicial } from "../components/Home/Home";
+import { Formulario } from "../components/Form/Form";
+import { OngsCadastradas } from "../components/OngCard/OngCard";
 
 export function AppRoutes() {
     return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { FaArrowCircleLeft, FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "../Botao/Botao.css";
-import "./OngsCadastradas.css";
+import "./OngCard.css";
+import { MdArrowBackIos } from "react-icons/md";
 
 interface Ong {
   name: string;
@@ -36,14 +36,21 @@ export function OngsCadastradas() {
   };
 
   return (
-    <main className="container">
+    <section className="container_card">
       <div className="container_icone">
         <Link to="/" className="link">
-          <FaArrowCircleLeft className="icone" />
-          Voltar para a página inicial
+          <MdArrowBackIos  className="icone" />
         </Link>
       </div>
-      <h1>ONGs Cadastradas</h1>
+      <h1 className="container_h1">Organizações Cadastradas</h1>
+      <div className="container_info">
+        <p>
+          Nessa seção é visualizar e editar as Ongs...Lorem ipsum dolor sit, amet
+          consectetur adipisicing elit. Provident sint voluptatem sed laudantium
+          officiis, veritatis enim libero mollitia tenetur eligendi autem
+          accusamus fugiat repellat. Ad repellat nam ea earum quaerat.
+        </p>
+      </div>
       <div className="container-ongs">
         {ongs.map((ong, index) => (
           <div key={index} className="container-ongs_box">
@@ -59,6 +66,6 @@ export function OngsCadastradas() {
           </div>
         ))}
       </div>
-    </main>
+    </section>
   );
 }
