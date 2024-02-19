@@ -1,19 +1,13 @@
-import { MdArrowBackIos } from "react-icons/md";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { MdArrowBackIos } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { z } from "zod";
-import "react-toastify/dist/ReactToastify.css";
-import { mensagemDeSucesso } from "../../utils/Alertas/MensagemDeSucesso";
-import { OngSchema } from "../../utils/Schemas/FormSchema";
-import { Button } from "../Button";
-import "./Form.css";
-import "../Button/Button.css";
+import { OngSchema, ongFormData } from "../../Schemas";
+import { Button } from "../../components";
+import { ThrowMessage } from "../../helpers";
+import "./OngRegister.css";
 
-type ongFormData = z.infer<typeof OngSchema>;
-
-export function Form() {
-
+export function OngRegister() {
   const {
     register,
     handleSubmit,
@@ -21,26 +15,34 @@ export function Form() {
     formState: { errors },
   } = useForm<ongFormData>({ resolver: zodResolver(OngSchema) });
 
+  //@ essa função deveria estar na camada de serviço assim como o try-catch
   async function formularioEnviado(dados: ongFormData) {
     try {
-      const response = await fetch('https://65c1f4b1f7e6ea59682a235d.mockapi.io/api/v1/ongs', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dados),
-      });
+      const response = await fetch(
+        "https://65c1f4b1f7e6ea59682a235d.mockapi.io/api/v1/ongs",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dados),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error('Erro ao enviar os dados.');
+        throw new Error("Erro ao enviar os dados.");
       }
 
       const responseData = await response.json();
-      console.log('Resposta do servidor:', responseData);
-      mensagemDeSucesso();
+      console.log("Resposta do servidor:", responseData);
+      ThrowMessage({
+        icon: "success",
+        title: "Parabéns!",
+        text: "Dados cadastrados com sucesso!",
+      });
       reset();
     } catch (error) {
-      console.error('Ocorreu um erro:', error);
+      console.error("Ocorreu um erro:", error);
     }
   }
 
