@@ -17,6 +17,7 @@ export function AppRoutes() {
 ! TODOS:
 !   1 - Criar um header para a aplicação e usar o react-router-dom para exibir esse header na aplicação toda.
 !   2 - Criar um footer para a aplicação e usar o react-router-dom para exibir esse header na aplicação toda.
+
 !   3 - A página home precisa conter a listagem das ongs diretamente
 !   4 - O header precisa ter um botão de adicionar que leve a página de criação
 !   5 - toda chamada precisa estar na camada de services e apenas ser chamada no componente
